@@ -14,7 +14,7 @@ const ProductList = () => {
     useEffect(() => {
       async function fetchProducts(){
       
-          const response = await fetch(`http://localhost:7070/products?name_like=${SearchTerm?SearchTerm:""}`);
+          const response = await fetch(`http://localhost:7070/444/products?name_like=${SearchTerm?SearchTerm:""}`);
           const data=await response.json();
           //setProducts(data);
           initialProductList(data);

@@ -12,7 +12,7 @@ const ProductDetails = () => {
     useEffect(()=>{
         async function fetchProducts(){
       
-            const response = await fetch(`http://localhost:7070/products/${params.id}`);
+            const response = await fetch(`http://localhost:7070/444/products/${params.id}`);
             const data=await response.json();
             setProduct(data);
          
