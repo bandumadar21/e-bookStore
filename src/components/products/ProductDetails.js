@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Rating from "./Rating";
+
 import useTitle from "../../hooks/useTitle";
 import { useCart } from "../../context/CartContext";
+import Rating from "./Rating";
 const ProductDetails = () => {
   const{cartList,addToCart,removeFromCart}=useCart();
    const[inCart,setInCart]=useState(false);
