@@ -31,9 +31,9 @@ const Header = () => {
     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <Link to="/" className="flex items-center">
             <img src={logo} className="h-9 mr-3" alt="E-BookStore Logo" />
-            <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">E-BookStore</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-BookStore</span>
         </Link>
-        <div className="flex items-center bg-white border-gray-200 dark:bg-gray-900 text-lg">
+        <div lassName="flex items-center relative">
             <span type="button" onClick={()=>setDarkMode(!darkMode)}  className='btn bi bi-gear-wide-connected me-5 hover:cursor-pointer'></span>
             <span onClick={()=>setSearchName(!searchName)} className='btn bi bi-search me-5 hover:cursor-pointer'></span>
             <span onClick={()=>navigate("/CartPage")} className=' btn cursor-pointer bi bi-cart-fill me-5 relative fill-blue-500' >
