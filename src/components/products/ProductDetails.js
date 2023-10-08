@@ -12,7 +12,7 @@ const ProductDetails = () => {
     useEffect(()=>{
         async function fetchProducts(){
       
-            const response = await fetch(`http://localhost:7070/444/products/${params.id}`);
+            const response = await fetch(`${process.env.REACT_APP_HOST}/444/products/${params.id}`);
             const data=await response.json();
             setProduct(data);
          

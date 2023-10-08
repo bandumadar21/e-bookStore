@@ -18,7 +18,7 @@ export const DashboardPage = () => {
             method: "GET",
             headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`}
         }
-        const response = await fetch(`http://localhost:7070/660/orders?user.id=${cbid}`, requestOptions);
+        const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders?user.id=${cbid}`, requestOptions);
         if(!response.ok){
             throw { message: response.statusText, status: response.status }; //eslint-disable-line
         }

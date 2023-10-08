@@ -17,7 +17,7 @@ const Register = () => {
             headers:{"content-type":"application/json"},
             body:JSON.stringify(registrationDetails)
         }
-        const response=await fetch("http://localhost:7070/users",requestOptions);
+        const response=await fetch(`${process.env.REACT_APP_HOST}/users`,requestOptions);
         const data=await response.json();
         data.accessToken?navigate("/products"):toast.error(data);
         if(data.accessToken)
@@ -27,9 +27,9 @@ const Register = () => {
       }
     }
   return (
-    <main style={{minHeight:'600px'}} >
+    <main style={{minHeight:'600px'}}>
     <section>
-      <p className="text-2xl text-center font-semibold dark:text-slate-100 my-10 underline underline-offset-8">Register</p>
+      <p className="text-2xl text-center font-semibold dark:text-slate-100 my-20 underline underline-offset-8">Register</p>
     </section>
     <div className="flex justify-center">
        <form onSubmit={handleRegister} className="flex justify-center flex-col w-2/4">

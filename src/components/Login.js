@@ -18,7 +18,7 @@ const Login = () => {
         headers:{"content-type":"application/json"},
         body:JSON.stringify(authDetail)
     }
-      const response=await fetch("http://localhost:7070/login",requestOptions)
+      const response=await fetch(`${process.env.REACT_APP_HOST}/login`,requestOptions)
       const data=await response.json();
       
       data.accessToken?navigate("/products"):toast.error(data);
@@ -31,7 +31,7 @@ const Login = () => {
     return (
     <main  style={{minHeight:'600px'}}>
     <section>
-      <p className="text-2xl text-center font-semibold dark:text-slate-100 my-10 underline underline-offset-8">Login</p>
+      <p className="text-2xl text-center font-semibold dark:text-slate-100 mt-20 mb-10 underline underline-offset-8">Login</p>
     </section>  
     <div className="flex justify-center">      
       <form onSubmit={handleLogin} className="w-2/4">

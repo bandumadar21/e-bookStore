@@ -12,7 +12,7 @@ const Checkout = ({setCheckout}) => {
         const cbid=sessionStorage.getItem("cbid");
         async function getUser()
         {
-            const response=await fetch(`http://localhost:7070/600/users/${cbid}`,{
+            const response=await fetch(`${process.env.REACT_APP_HOST}/600/users/${cbid}`,{
                 method:"GET",
                 headers:{"content-type":"application/json",Authorization:`Bearer ${token}`}
             });
@@ -45,7 +45,7 @@ const Checkout = ({setCheckout}) => {
                     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                     body: JSON.stringify(order)
                 }
-                const response = await fetch(`http://localhost:7070/660/orders`, requestOptions);
+                const response = await fetch(`${process.env.REACT_APP_HOST}/660/orders`, requestOptions);
                 if(!response.ok){
                     throw { message: response.statusText, status: response.status }; //eslint-disable-line
                 }
