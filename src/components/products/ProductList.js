@@ -24,7 +24,7 @@ const ProductList = () => {
     }, [SearchTerm,initialProductList])
   
     return (
-      <section className="my-4 ">
+      <section className="my-5 ">
             <div className="my-5 flex justify-between max-w-7xl">
             <span className="text-2xl ms-14 font-semibold dark:text-slate-100 mb-5">All eBooks ({products.length})</span>
             <span>
