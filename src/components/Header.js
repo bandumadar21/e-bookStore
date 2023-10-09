@@ -34,9 +34,9 @@ const Header = () => {
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-BookStore</span>
         </Link>
         <div lassName="flex items-center relative">
-            <span type="button" onClick={()=>setDarkMode(!darkMode)}  className='btn bi bi-gear-wide-connected me-5 hover:cursor-pointer'></span>
-            <span onClick={()=>setSearchName(!searchName)} className='btn bi bi-search me-5 hover:cursor-pointer'></span>
-            <span onClick={()=>navigate("/CartPage")} className=' btn cursor-pointer bi bi-cart-fill me-5 relative fill-blue-500' >
+            <span type="button" onClick={()=>setDarkMode(!darkMode)}  className='btn bi bi-gear-wide-connected me-4 hover:cursor-pointer'></span>
+            <span onClick={()=>setSearchName(!searchName)} className='btn bi bi-search me-4 hover:cursor-pointer'></span>
+            <span onClick={()=>navigate("/CartPage")} className=' btn cursor-pointer bi bi-cart-fill me-4 relative fill-blue-500' >
             <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-3 -right-2 dark:border-gray-900">{cartList.length}</span>
             </span>
             <span onClick={()=>setDropdown(!dropdown)} className='btn bi bi-person-circle me-5'></span>
