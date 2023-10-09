@@ -31,7 +31,7 @@ const Header = () => {
     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <Link to="/" className="flex items-center">
             <img src={logo} className="h-9 mr-3" alt="E-BookStore Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-BookStore</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BookStore</span>
         </Link>
         <div lassName="flex items-center relative">
             <span type="button" onClick={()=>setDarkMode(!darkMode)}  className='btn bi bi-gear-wide-connected me-4 hover:cursor-pointer'></span>
@@ -39,7 +39,7 @@ const Header = () => {
             <span onClick={()=>navigate("/CartPage")} className=' btn cursor-pointer bi bi-cart-fill me-4 relative fill-blue-500' >
             <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-3 -right-2 dark:border-gray-900">{cartList.length}</span>
             </span>
-            <span onClick={()=>setDropdown(!dropdown)} className='btn bi bi-person-circle me-5'></span>
+            <span onClick={()=>setDropdown(!dropdown)} className='btn bi bi-person-circle me-'></span>
            { dropdown &&(t?<DropDownLogin setDropdown={setDropdown}/>:<DropDownLogout setDropdown={setDropdown}/>)}
         </div>
     </div>

@@ -1,6 +1,6 @@
 import { Routes,Route } from "react-router-dom";
 import Home from "../Home/Home";
-import ProductList from "../products/ProductList";
+
 import Header from "../Header";
 import Footer from "../Footer";
 import ProductDetails from "../products/ProductDetails";
@@ -11,6 +11,7 @@ import ProtectedCart from "../../cart/ProtectedCart";
 import { OrderPage } from "../../assets/order/OrderPage";
 import { DashboardPage } from "../../DashBoard/DashboardPage";
 import { PageNotFound } from "../PageNotFound";
+import { ProductsList } from "../products/ProductList";
 
 const AllRoutes = () => {
   return (
@@ -18,7 +19,7 @@ const AllRoutes = () => {
         <Header/>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/products" element={<ProductList/>} />
+        <Route path="/products" element={<ProductsList/>} />
         <Route path="/products/:id" element={<ProductDetails/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />

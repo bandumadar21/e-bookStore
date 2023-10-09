@@ -1,81 +1,79 @@
 import { createContext, useContext, useReducer } from "react"
 import { filterReducer } from "../reducers/filterReducers";
 
-const filterInitialState={
-    productList:[],
-    onlyInStock:false,
-    bestSellerOnly:false,
-    sortBy:null,
-    ratings:null
+
+const filterInitialState = {
+    productList: [],
+    onlyInStock: false,
+    bestSellerOnly: false,
+    sortBy: null,
+    ratings: null
 }
 
- const filterContext=createContext(filterInitialState);
-export const FilterProvider=({children})=>{
-    const [state,dispatch]=useReducer(filterReducer,filterInitialState);
-    const initialProductList=(products)=>{
+const FilterContext = createContext(filterInitialState);
+
+export const FilterProvider = ({children}) => {
+    const [state, dispatch] = useReducer(filterReducer, filterInitialState);
+
+    function initialProductList(products){
         dispatch({
-            type:"PRODUCT_LIST",
-            payload:{
-                products:products
+            type: "PRODUCT_LIST",
+            payload: {
+                products: products
             }
         });
     }
-    function bestSeller(products){
-        return state.bestSellerOnly?(products.filter(product=>product.best_seller===true)):products;
-    }
-    function inStock(products)
-    {
-        return (state.onlyInStock)?products.filter(product=>product.in_stock===true):products;
-    }
-    function sort(products)
-    {
-        if(state.sortBy==="lowtohigh")
-        {
-            return products.sort((a,b)=>Number(a.price)-Number(b.price))
-        }
-        if(state.sortBy==="hightolow")
-        {
-            return products.sort((a,b)=>Number(b.price)-Number(a.price))
-        }
-        return products;
 
+    function bestSeller(products){
+        return state.bestSellerOnly ? products.filter(product => product.best_seller === true) : products;
     }
-    function rating(products)
-    {
-        if(state.ratings==="4STARSABOVE")
-        {
-            return products.filter((product)=>product.rating>=4)
+
+    function inStock(products){
+        return state.onlyInStock ? products.filter(product => product.in_stock === true) : products;
+    }
+    
+    function sort(products){
+        if(state.sortBy === "lowtohigh"){
+            return products.sort((a, b) => Number(a.price) - Number(b.price));
         }
-        if(state.ratings==="3STARSABOVE")
-        {
-            return products.filter((product)=>product.rating>=3)
-        }
-        if(state.ratings==="2STARSABOVE")
-        {
-            return products.filter((product)=>product.rating>=2)
-        }
-        if(state.ratings==="1STARSABOVE")
-        {
-            return products.filter((product)=>product.rating>=1)
+        if(state.sortBy === "hightolow"){
+            return products.sort((a, b) => Number(b.price) - Number(a.price));
         }
         return products;
-        
     }
-    const filteredProductList=rating(sort(inStock(bestSeller(state.productList))));
-    const value={ 
-        state,
+
+    function rating(products){
+        if(state.ratings === "4STARSABOVE"){
+            return products.filter(product => product.rating >= 4);
+        }
+        if(state.ratings === "3STARSABOVE"){
+            return products.filter(product => product.rating >= 3);
+        }
+        if(state.ratings === "2STARSABOVE"){
+            return products.filter(product => product.rating >= 2);
+        }
+        if(state.ratings === "1STARSABOVE"){
+            return products.filter(product => product.rating >= 1);
+        }
+        return products;
+    }
+
+    const filteredProductList = rating(sort(inStock(bestSeller(state.productList))));
+
+    const value = {
+        state, 
         dispatch,
-        products:filteredProductList,
+        products: filteredProductList,
         initialProductList
     }
-    return(
-        <filterContext.Provider value={value}>
+    return (
+        <FilterContext.Provider value={value}>
             {children}
-        </filterContext.Provider>
+        </FilterContext.Provider>
     )
-
 }
-export const useFilter=()=>{
-    const context=useContext(filterContext);
+
+export const useFilter = () => {
+    const context = useContext(FilterContext);
     return context;
 }
